@@ -7,6 +7,8 @@
 This is the very first time I have worked with a header file and function prototype and L9733 so everything
 is new to me. I have a lot of things to learn and this is what I did with the task you provide.
 
+In thí file, the MCU that I am using is NUCLEO STM32L152RE, the block diagram for this MCU will be provided in the attach github link: https://github.com/phuclevinh2000/L9733-test/blob/main/STM32L152RE%20block%20diagram.xlsx
+
 High-side swithching: The gate voltage have to be higher than Ut+Us to active the switch, in this case Us=(Vcc*Rl)/(Rl+Rds) (connected in parallel)
 is similar to Vcc because Rl is much larger than Rds. 
 Low-side switching: This one is much more farmiliar than the high-side switching because it require much smaller voltage 
