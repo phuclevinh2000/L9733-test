@@ -85,12 +85,12 @@ void delay_Ms(long long delay);								/*Delay function for the system in ms*/
 void delay_Us(long long delay);								/*Delay function for the system in us*/
 
 /*Low-side driver and high-side driver*/
-bool SetSideDriver(int Source, int Drain);					/*Return the state of the driver (low state for low-side drivers and igh state for high-side drivers*/
+bool SetSideDriver(int Source, int Drain);					            /*Return the state of the driver (low state for low-side drivers and igh state for high-side drivers*/
 void SetTheDriver(bool DriverSide, int Source, int Drain);	/*Return the Gate voltage to switch on the switch*/
 
 /*Supply pins*/
-void GetBatteySupply (void);								/*Get the Battery Supply Vbat*/
-void GetMainPowerInput(void);								/*Get the external value of Vdd*/
+void GetBatteySupply (void);								          /*Get the Battery Supply Vbat*/
+void GetMainPowerInput(void);								         /*Get the external value of Vdd*/
 void GetDiscreteInputVoltageSupply(void);					/*Get the Discrete inputs voltage supply VDO value*/
 
 /*Discrete input*/
@@ -100,26 +100,26 @@ void Set_RES(bool level)									/*Set the reset  level of In6, In7, In8 (active
 /*Serial peripheral interface (SPI)
 * All function prototype with SPI will have the spi_t type which represents the SPI controller of the MCU
 */
-void Get_SCLK(spi_t spiHandler);										/*Get the serial clock signal input generate by the MCU*/
+void Get_SCLK(spi_t spiHandler);										                              /*Get the serial clock signal input generate by the MCU*/
 int spi_SetSSEdges(spi_t spiHandler, int SSDelayStart, int SSDelayStop)	/*Defines the slave select edges position.*/
-int spi_SetReqClock(spi_t spiHandler, int Freq)							/*Defines the requested operating clock frequency (in Hz).*/
-int spi_GetReqClock(spi_t spiHandler)									/*Returns the current requested operating clock frequency (in Hz).*/
+int spi_SetReqClock(spi_t spiHandler, int Freq)						                  	/*Defines the requested operating clock frequency (in Hz).*/
+int spi_GetReqClock(spi_t spiHandler)								                          	/*Returns the current requested operating clock frequency (in Hz).*/
 
-int spi_GetSSDelayStart(spi_t spiHandler)								/*Returns the slave select start edge positions*/
-int spi_GetSSDelayStop(spi_t spiHandler)								/*Returns the slave select stop edge positions*/
+int spi_GetSSDelayStart(spi_t spiHandler)							           	/*Returns the slave select start edge positions*/
+int spi_GetSSDelayStop(spi_t spiHandler)							            	/*Returns the slave select stop edge positions*/
 void spi_SetSSActiveLevel(spi_t spiHandler, bool Level) 				/*Sets the CS signal(s) active level.*/
-bool spi_GetSSActiveLevel(spi_t spiHandler)								/*Return the CS signal(s) active level.*/
+bool spi_GetSSActiveLevel(spi_t spiHandler)						         		/*Return the CS signal(s) active level.*/
 
-void spi_GetDI(spi_t spiHandler);										/*Get SPI data in*/
-int spi_SetDO(spi_t spiHandler);										/*Set SPI data out*/
+void spi_GetDI(spi_t spiHandler);									                 	/*Get SPI data in*/
+int spi_SetDO(spi_t spiHandler);								 	                 	/*Set SPI data out*/
 
-void spi_SetMaster(spi_t spiHandler)									/*Sets master mode with SS pin control enabled*/
-void spi_SetSlave(spi_t spiHandler)										/*Sets slave mode with SS pin control enabled*/
-void spi_SetPins(spi_t spiHandler)										/*Sets SPI pins*/
-void spi_SetDataMode(spi_t spiHandler, BYTE mode)						/*Set SPI data mode*/
-void spi_TranferByte(spi_t spiHandler, BYTE data)						/*Transfer 1 byte*/
-int spi_Read (spi_t spiHandler, BYTE* data, int length, int addr)		/*Read a byte of data from a specific address*/
-void spi_WriteValue(spi_t spiHandler, int addr, int value)				/*Write a byte of data to a specific address */
+void spi_SetMaster(spi_t spiHandler)								                          	/*Sets master mode with SS pin control enabled*/
+void spi_SetSlave(spi_t spiHandler)										                          /*Sets slave mode with SS pin control enabled*/
+void spi_SetPins(spi_t spiHandler)								 	                          	/*Sets SPI pins*/
+void spi_SetDataMode(spi_t spiHandler, BYTE mode)						                /*Set SPI data mode*/
+void spi_TranferByte(spi_t spiHandler, BYTE data)						                /*Transfer 1 byte*/
+int spi_Read (spi_t spiHandler, BYTE* data, int length, int addr)		    /*Read a byte of data from a specific address*/
+void spi_WriteValue(spi_t spiHandler, int addr, int value)			         	/*Write a byte of data to a specific address */
 
 /*Fault operation*/
 void SetFaultOperation(bool D1, bool D0, bool DriverState);				/*Get the driver state (high-side P or low-side N) and fault operation by the state of D0 and D1 and the fault logic definition*/
