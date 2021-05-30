@@ -53,10 +53,10 @@ There is another file for RTOS configuration named OS_CFG.H that have all the st
  *     contains the typedefs required to build FreeRTOS.  Read the instructions
  *     in FreeRTOS/source/stdint.readme for more information.
  */
-#include <stdint.h>									  	/*FreeRTOS, as explained above*/
-#include "spi.h"										     /*include of the serial peripheral interface*/
-#include "stm32l1xx,h"									/*include the header file for STM32L152RE */
-#include "nucleo152start.h"				/*Header file for STM32L152RE*/
+#include <stdint.h>			/*FreeRTOS, as explained above*/
+#include "spi.h"			/*include of the serial peripheral interface*/
+#include "stm32l1xx,h"			/*include the header file for STM32L152RE */
+#include "nucleo152start.h"			/*Header file for STM32L152RE*/
 
 /*The Real-Time Kernel (by Jean J. Labrosse) for WIN32 PORT & LINUX PORT*/
 #ifndef __GNUC__
