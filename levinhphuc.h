@@ -15,7 +15,7 @@ to active the switch because Vs is 0V since it is connected to the ground. V gat
 I have limitation with the fault operation, I just made one function prototype to check the D1 and D0, compare to the logic table provided 
 on page 25 of the datasheet
 
-There is another file for RTOS configuration named OS_CFG.H that have all the state for SEMAPHORES, MESSAGE QUEUES, EVENTS FLAGS,etc.
+There is another file for RTOS configuration named OS_CFG.H that have all the state for SEMAPHORES, MESSAGE QUEUES, EVENTS FLAGS,etc. 
 *********************************************************************************************************
 
 */
@@ -89,11 +89,11 @@ void SetTheDriver(bool DriverSide, int Source, int Drain);	/*Return the Gate vol
 /*Supply pins*/
 void GetBatteySupply (void);								/*Get the Battery Supply Vbat*/
 void GetMainPowerInput(void);								/*Get the external value of Vdd*/
-void GetDiscreteInputVoltageSupply(void);					/*Get VDO value*/
+void GetDiscreteInputVoltageSupply(void);					/*Get the Discrete inputs voltage supply VDO value*/
 
 /*Discrete input*/
 void GetDiscrete(void);										/*Get the discrete input usded to PWM output driver 6,7 or 8*/
-void Set_RES(bool level)									/*Set the reset input of In6, In7, In8 (active low)*/
+void Set_RES(bool level)									/*Set the reset  level of In6, In7, In8 (active low)*/
 
 /*Serial peripheral interface (SPI)
 * All function prototype with SPI will have the spi_t type which represents the SPI controller of the MCU
@@ -111,7 +111,7 @@ bool spi_GetSSActiveLevel(spi_t spiHandler)								/*Return the CS signal(s) act
 void spi_GetDI(spi_t spiHandler);										/*Get SPI data in*/
 int spi_SetDO(spi_t spiHandler);										/*Set SPI data out*/
 
-void spi_SetMaster(spi_t spiHandler)									/*Sets master mode with SS pin control enable*/
+void spi_SetMaster(spi_t spiHandler)									/*Sets master mode with SS pin control enabled*/
 void spi_SetSlave(spi_t spiHandler)										/*Sets slave mode with SS pin control enabled*/
 void spi_SetPins(spi_t spiHandler)										/*Sets SPI pins*/
 void spi_SetDataMode(spi_t spiHandler, BYTE mode)						/*Set SPI data mode*/
