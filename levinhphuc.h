@@ -4,15 +4,14 @@
 * By   : Le Vinh Phuc
 * Further modifications: phuclevinh2000@gmail.com
 *********************************************************************************************************
-This is the very first time I have worked with a header file and function prototype and L9733 so everything
-is new to me. I have a lot of things to learn and this is what I did with the task you provide.
 
-In thí file, the MCU that I am using is NUCLEO STM32L152RE, the block diagram for this MCU will be provided in the attach github link: https://github.com/phuclevinh2000/L9733-test/blob/main/STM32L152RE%20block%20diagram.xlsx
+In this file, the MCU that I used is the NUCLEO STM32L152RE. The block diagram for this MCU will be provided in the attached github link: https://github.com/phuclevinh2000/L9733-test/blob/main/STM32L152RE%20block%20diagram.xlsx
 
-High-side swithching: The gate voltage have to be higher than Ut+Us to active the switch, in this case Us=(Vcc*Rl)/(Rl+Rds) (connected in parallel)
+Theory: 
+High-side switching: The gate voltage has to be higher than Ut+Us to active the switch, in this case Us=(Vcc*Rl)/(Rl+Rds) (connected in parallel)
 is similar to Vcc because Rl is much larger than Rds. 
-Low-side switching: This one is much more farmiliar than the high-side switching because it require much smaller voltage 
-to active the switch because Vs is 0V since it is connected to the ground. V gate only need to be about Ut.
+Low-side switching: This one is much more common than the high-side switching because it requires much smaller voltage 
+to active the switch because Vs is 0V since it is connected to the ground. Gate voltage is merely similar to Ut.
 
 I have limitation with the fault operation, I just made one function prototype to check the D1 and D0, compare to the logic table provided 
 on page 25 of the datasheet
@@ -81,21 +80,21 @@ There is another file for RTOS configuration named OS_CFG.H that have all the st
 
 /* Function Prototype ------------------------------------------------------- */
 /*Delay function*/
-void delay_Ms(long long delay);								/*Delay function for the system in ms*/
-void delay_Us(long long delay);								/*Delay function for the system in us*/
+void delay_Ms(long long delay);								                    /*Delay function for the system in ms*/
+void delay_Us(long long delay);							                    	/*Delay function for the system in us*/
 
 /*Low-side driver and high-side driver*/
 bool SetSideDriver(int Source, int Drain);					            /*Return the state of the driver (low state for low-side drivers and igh state for high-side drivers*/
 void SetTheDriver(bool DriverSide, int Source, int Drain);	/*Return the Gate voltage to switch on the switch*/
 
 /*Supply pins*/
-void GetBatteySupply (void);								          /*Get the Battery Supply Vbat*/
-void GetMainPowerInput(void);								         /*Get the external value of Vdd*/
-void GetDiscreteInputVoltageSupply(void);					/*Get the Discrete inputs voltage supply VDO value*/
+void GetBatteySupply (void);								                       /*Get the Battery Supply Vbat*/
+void GetMainPowerInput(void);								                      /*Get the external value of Vdd*/
+void GetDiscreteInputVoltageSupply(void);					             /*Get the Discrete inputs voltage supply VDO value*/
 
 /*Discrete input*/
-void GetDiscrete(void);										/*Get the discrete input usded to PWM output driver 6,7 or 8*/
-void Set_RES(bool level)									/*Set the reset  level of In6, In7, In8 (active low)*/
+void GetDiscrete(void);										                          /*Get the discrete input usded to PWM output driver 6,7 or 8*/
+void Set_RES(bool level)								                          	/*Set the reset  level of In6, In7, In8 (active low)*/
 
 /*Serial peripheral interface (SPI)
 * All function prototype with SPI will have the spi_t type which represents the SPI controller of the MCU
@@ -105,21 +104,21 @@ int spi_SetSSEdges(spi_t spiHandler, int SSDelayStart, int SSDelayStop)	/*Define
 int spi_SetReqClock(spi_t spiHandler, int Freq)						                  	/*Defines the requested operating clock frequency (in Hz).*/
 int spi_GetReqClock(spi_t spiHandler)								                          	/*Returns the current requested operating clock frequency (in Hz).*/
 
-int spi_GetSSDelayStart(spi_t spiHandler)							           	/*Returns the slave select start edge positions*/
-int spi_GetSSDelayStop(spi_t spiHandler)							            	/*Returns the slave select stop edge positions*/
-void spi_SetSSActiveLevel(spi_t spiHandler, bool Level) 				/*Sets the CS signal(s) active level.*/
-bool spi_GetSSActiveLevel(spi_t spiHandler)						         		/*Return the CS signal(s) active level.*/
+int spi_GetSSDelayStart(spi_t spiHandler)							           	            /*Returns the slave select start edge positions*/
+int spi_GetSSDelayStop(spi_t spiHandler)							            	            /*Returns the slave select stop edge positions*/
+void spi_SetSSActiveLevel(spi_t spiHandler, bool Level) 				            /*Sets the CS signal(s) active level.*/
+bool spi_GetSSActiveLevel(spi_t spiHandler)						         	            	/*Return the CS signal(s) active level.*/
 
-void spi_GetDI(spi_t spiHandler);									                 	/*Get SPI data in*/
-int spi_SetDO(spi_t spiHandler);								 	                 	/*Set SPI data out*/
+void spi_GetDI(spi_t spiHandler);									                             	/*Get SPI data in*/
+int spi_SetDO(spi_t spiHandler);								 	                 	            /*Set SPI data out*/
 
-void spi_SetMaster(spi_t spiHandler)								                          	/*Sets master mode with SS pin control enabled*/
-void spi_SetSlave(spi_t spiHandler)										                          /*Sets slave mode with SS pin control enabled*/
-void spi_SetPins(spi_t spiHandler)								 	                          	/*Sets SPI pins*/
-void spi_SetDataMode(spi_t spiHandler, BYTE mode)						                /*Set SPI data mode*/
-void spi_TranferByte(spi_t spiHandler, BYTE data)						                /*Transfer 1 byte*/
-int spi_Read (spi_t spiHandler, BYTE* data, int length, int addr)		    /*Read a byte of data from a specific address*/
-void spi_WriteValue(spi_t spiHandler, int addr, int value)			         	/*Write a byte of data to a specific address */
+void spi_SetMaster(spi_t spiHandler)								                          	 /*Sets master mode with SS pin control enabled*/
+void spi_SetSlave(spi_t spiHandler)										                           /*Sets slave mode with SS pin control enabled*/
+void spi_SetPins(spi_t spiHandler)								 	                           	/*Sets SPI pins*/
+void spi_SetDataMode(spi_t spiHandler, BYTE mode)						                 /*Set SPI data mode*/
+void spi_TranferByte(spi_t spiHandler, BYTE data)						                 /*Transfer 1 byte*/
+int spi_Read (spi_t spiHandler, BYTE* data, int length, int addr)		     /*Read a byte of data from a specific address*/
+void spi_WriteValue(spi_t spiHandler, int addr, int value)			         	 /*Write a byte of data to a specific address */
 
 /*Fault operation*/
 void SetFaultOperation(bool D1, bool D0, bool DriverState);				/*Get the driver state (high-side P or low-side N) and fault operation by the state of D0 and D1 and the fault logic definition*/
