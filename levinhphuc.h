@@ -85,12 +85,12 @@ void delay_Us(long long delay);								/*Delay function for the system in us*/
 
 /*Low-side driver and high-side driver*/
 bool SetSideDriver(int Source, int Drain);					            /*Return the state of the driver (low state for low-side drivers and igh state for high-side drivers*/
-void SetTheDriver(bool DriverSide, int Source, int Drain);	/*Return the Gate voltage to switch on the switch*/
+void SetTheDriver(bool DriverSide, int Source, int Drain);				/*Return the Gate voltage to switch on the switch*/
 
 /*Supply pins*/
-void GetBatteySupply (void);								          /*Get the Battery Supply Vbat*/
+void GetBatteySupply (void);										/*Get the Battery Supply Vbat*/
 void GetMainPowerInput(void);							         	/*Get the external value of Vdd*/
-void GetDiscreteInputVoltageSupply(void);					/*Get the Discrete inputs voltage supply VDO value*/
+void GetDiscreteInputVoltageSupply(void);							/*Get the Discrete inputs voltage supply VDO value*/
 
 /*Discrete input*/
 void GetDiscrete(void);										 /*Get the discrete input usded to PWM output driver 6,7 or 8*/
